@@ -48,5 +48,4 @@ Baixar manualmente do Kaggle:
 https://www.kaggle.com/datasets/atulanandjha/temperature-readings-iot-devices
 
 ## ✍️ Autor
-Tiago Mello
-
+Victor Hugo Santos
