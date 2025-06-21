@@ -1,1 +1,0 @@
--- SQL para criar views no banco de dados

@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres
+    container_name: postgres-iot
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  pipeline:
+    build: .
+    container_name: iot-pipeline-job
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    command: >
+      bash -c "
+        python pipeline.py
+      "
+
+  dashboard:
+    build: .
+    container_name: iot-dashboard
+    depends_on:
+      pipeline:
+        condition: service_completed_successfully
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    command: >
+      bash -c "
+        streamlit run dashboard.py
+      "
+
+volumes:
+  pgdata:
