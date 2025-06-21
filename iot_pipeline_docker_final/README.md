@@ -27,3 +27,6 @@ Acesse o dashboard em: http://localhost:8501
 - `avg_temp_por_dispositivo`
 - `leituras_por_hora`
 - `temp_max_min_por_dia`
+
+Autor
+Victor santos
